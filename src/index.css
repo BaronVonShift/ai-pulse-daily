@@ -201,41 +201,38 @@
 .wp-excerpt strong { font-weight: 600; }
 .wp-excerpt em { font-style: italic; }
 .wp-excerpt ul, .wp-excerpt ol { margin: 0.5rem 0 0.5rem 1.25rem; }
-/* Matrix background with binary rain on left/right sides */
+
+/* Matrix static texture on both sides */
 .matrix-bg {
   position: relative;
-  min-height: 100%;
-  background: radial-gradient(1200px 600px at 10% 0%, rgba(56,189,248,0.06), transparent 70%),
-              radial-gradient(1200px 600px at 90% 100%, rgba(56,189,248,0.06), transparent 70%),
-              #061427; /* deep blue */
+  min-height: 100vh;
+  background-color: #061427; /* deep blue */
+  color: white;
 }
 
+/* Left texture */
 .matrix-bg::before,
 .matrix-bg::after {
-  content: "0101001101010011010011010010010100100101010011001010010011010101 0011010010010100 01010100110100110100110010100110010101001011";
+  content: "";
   position: absolute;
-  top: -200%;
-  bottom: -200%;
-  width: 120px;
-  color: rgba(56,189,248,0.35); /* cyan-ish */
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-  font-size: 14px;
-  line-height: 1.25;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  letter-spacing: -0.25em;
-  opacity: 0.4;
-  filter: drop-shadow(0 0 8px rgba(56,189,248,0.6));
-  animation: matrix-rain 22s linear infinite;
+  top: 0;
+  bottom: 0;
+  width: 170px; /* width of the side strip */
+  background-image: url("/matrix-texture.png");
+  background-repeat: none;
+  background-size: cover;
+  opacity: 0.6;
   pointer-events: none;
 }
-.matrix-bg::before { left: 0; }
-.matrix-bg::after  { right: 0; animation-duration: 26s; animation-delay: -6s; }
 
-@keyframes matrix-rain {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(50%); }
+.matrix-bg::before {
+  left: 0;
 }
+
+.matrix-bg::after {
+  right: 0;
+}
+
 
 /* Post content prettiness on dark bg */
 .post-wrap { color: #e5e7eb; } /* text-gray-200 */
