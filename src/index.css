@@ -195,3 +195,62 @@
     overflow: hidden;
   }
 }
+/* WP excerpt HTML */
+.wp-excerpt p { margin: 0.25rem 0; }
+.wp-excerpt a { text-decoration: underline; }
+.wp-excerpt strong { font-weight: 600; }
+.wp-excerpt em { font-style: italic; }
+.wp-excerpt ul, .wp-excerpt ol { margin: 0.5rem 0 0.5rem 1.25rem; }
+/* Matrix background with binary rain on left/right sides */
+.matrix-bg {
+  position: relative;
+  min-height: 100%;
+  background: radial-gradient(1200px 600px at 10% 0%, rgba(56,189,248,0.06), transparent 70%),
+              radial-gradient(1200px 600px at 90% 100%, rgba(56,189,248,0.06), transparent 70%),
+              #061427; /* deep blue */
+}
+
+.matrix-bg::before,
+.matrix-bg::after {
+  content: "0101001101010011010011010010010100100101010011001010010011010101 0011010010010100 01010100110100110100110010100110010101001011";
+  position: absolute;
+  top: -200%;
+  bottom: -200%;
+  width: 120px;
+  color: rgba(56,189,248,0.35); /* cyan-ish */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.25;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: -0.25em;
+  opacity: 0.4;
+  filter: drop-shadow(0 0 8px rgba(56,189,248,0.6));
+  animation: matrix-rain 22s linear infinite;
+  pointer-events: none;
+}
+.matrix-bg::before { left: 0; }
+.matrix-bg::after  { right: 0; animation-duration: 26s; animation-delay: -6s; }
+
+@keyframes matrix-rain {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(50%); }
+}
+
+/* Post content prettiness on dark bg */
+.post-wrap { color: #e5e7eb; } /* text-gray-200 */
+.post-content h2, .post-content h3, .post-content h4 {
+  color: #ffffff;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.post-content p { margin: 0.75rem 0; color: #cbd5e1; } /* text-gray-300 */
+.post-content a { color: #67e8f9; text-decoration: underline; }
+.post-content strong { color: #ffffff; }
+.post-content blockquote {
+  border-left: 3px solid rgba(56,189,248,0.4);
+  padding-left: 1rem; margin: 1rem 0; color: #cbd5e1;
+}
+.post-content img { max-width: 100%; border-radius: 0.75rem; margin: 1rem auto; display: block; }
+.post-content ul, .post-content ol { margin: 0.75rem 0 0.75rem 1.25rem; }
